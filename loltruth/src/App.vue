@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <p>
-    </p>
+    <PlanetChart/>
   </div>
 </template>
 
 <script>
+import PlanetChart from './components/PlanetChart.vue'
+
 export default {
-
+  name: 'App',
+  components: {
+    PlanetChart
+  }
 }
-
 </script>
 
 
