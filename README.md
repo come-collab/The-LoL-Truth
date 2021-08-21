@@ -19,3 +19,8 @@ We will also use **Chart JS** for the graphs.
 And of course the **League of Legend API** for the data collection.
 
 Since the LoL API isnt really well documented i will use a homemade **Python scrapper** for the **op.gg** website wich contains really interesting informations.
+Most of the data is coming from the scrapper named datascrapper.py in the project which uses two dependencies :
+**BeautifulSoup**
+and
+**request**
+
