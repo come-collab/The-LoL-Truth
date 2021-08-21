@@ -24,8 +24,6 @@ def get_all_items(html):
     items = soup.find("table", {"class": "ranking-table"}).findAll("tr", {"class": "ranking-table__row"})
     return items
 
-
-
 #On dit ce que l'on recupere dans les champs definient au dessus
 def get_item_data(item):
     try:
@@ -42,10 +40,40 @@ def get_item_data(item):
 
 #Ici on vas essayer de recuperer title qui est en realité,
 #une URL et visiter chaque page de chaque utilisateur pour recuperer leur rang des saisons précédentes
+#Pour passer a l etape deux il nous faut desormais partir sur une deuxieme etape les urls a visiter sont
+#contenu dans : data['title']
+
+#la on recupere les ranks
+def get_ranks(html):
+    soup = BeautifulSoup(html, 'lxml')
+    #Ici on defini ce que le Scrapper vas nous renvoyer
+    ranks = soup.find("div", {"class": "PastRank"}).findAll("ul", {"class": "PastRankList"})
+    return ranks
+
+def get_data_rank(rank):
+    try:
+          saison = rank.find('b').text
+    except:
+          saison = ''
+    try:
+          rang = rank.find("li").text
+    except:
+          price = ''
+    rank = {'saisons': saison,
+            'rangs': rang}
+    return rank
+
+
+def write_past_rank(i, rank):
+    with open('ranks.csv', 'a',encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow((rank['saisons'],
+        rank['rangs']))
+        print(i, rank['rangs'], 'parsed')
 
 
 def write_csv(i, data):
-    with open('notebooks.csv', 'a') as f:
+    with open('summoners.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow((data['title'],
         data['price']))
@@ -57,9 +85,14 @@ def main():
    for page in range(1, 5):  # count of pages to parse
        all_items = get_all_items(get_html(url + '?_pgn={}'.format(page)))
        for i, item in enumerate(all_items):
-           data = get_item_data(item)
-           write_csv(i, data)
-
+            data = get_item_data(item)
+            write_csv(i, data)
+            new_url = data['title']
+            print ('voila la nouvelle url ' + new_url)
+            all_ranks = get_ranks(get_html('http:' + new_url))
+            for j, rank in enumerate(all_ranks):
+                new_data = get_data_rank(rank)
+                write_past_rank(j,new_data)
 
 if __name__ == '__main__':
    main()
