@@ -29,7 +29,7 @@ def get_all_items(html):
 #On dit ce que l'on recupere dans les champs definient au dessus
 def get_item_data(item):
     try:
-          title = item.find('a', href=True)
+          title = item.find('a').get('href')
     except:
           title = ''
     try:
@@ -39,10 +39,6 @@ def get_item_data(item):
     data = {'title': title,
             'price': price}
     return data
-
-
-#On a beaucoup d'information inutiles surtout la partie img
-
 
 #Ici on vas essayer de recuperer title qui est en realité,
 #une URL et visiter chaque page de chaque utilisateur pour recuperer leur rang des saisons précédentes
