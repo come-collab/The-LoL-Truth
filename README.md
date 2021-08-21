@@ -14,6 +14,8 @@ The application will mainly run with javascript dependency so we will try a JS f
 
 The framework we will use is : **Vue.js** for its simplicity in usage.
 
-We will also use **Google Charts** for the graphs.
+We will also use **Chart JS** for the graphs.
 
 And of course the **League of Legend API** for the data collection.
+
+Since the LoL API isnt really well documented i will probably use a homemade **Python scrapper** for the **op.gg** website wich contains really interesting informations.
