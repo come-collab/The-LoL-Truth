@@ -48,27 +48,31 @@ def get_ranks(html):
     soup = BeautifulSoup(html, 'lxml')
     #Ici on defini ce que le Scrapper vas nous renvoyer
     ranks = soup.find("div", {"class": "PastRank"}).findAll("ul", {"class": "PastRankList"})
+    
+    #if ranks == '': créer une condition pour quand ranks est empty 
+    
     return ranks
 
+#Il faut trouver un moyen de trouver toute les saisons et les liés a une personne
 def get_data_rank(rank):
     try:
-          saison = rank.find('b').text
+          saison = rank.find('li').text
     except:
           saison = ''
     try:
           rang = rank.find("li").text
     except:
-          price = ''
+          rang = ''
     rank = {'saisons': saison,
             'rangs': rang}
     return rank
 
 
-def write_past_rank(i, rank):
+def write_past_rank(i, rank,data):
     with open('ranks.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow((rank['saisons'],
-        rank['rangs']))
+        rank['rangs'],data['price']))
         print(i, rank['rangs'], 'parsed')
 
 
@@ -89,10 +93,10 @@ def main():
             write_csv(i, data)
             new_url = data['title']
             print ('voila la nouvelle url ' + new_url)
-            all_ranks = get_ranks(get_html('http:' + new_url))
+            all_ranks = get_ranks(get_html('https:' + new_url))
             for j, rank in enumerate(all_ranks):
                 new_data = get_data_rank(rank)
-                write_past_rank(j,new_data)
+                write_past_rank(j,new_data,data)
 
 if __name__ == '__main__':
    main()
