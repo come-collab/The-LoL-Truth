@@ -41,23 +41,27 @@ def get_item_data(item):
 #la on recupere les ranks
 def get_ranks(html):
     data = BeautifulSoup(html, 'html.parser')
-    ranks = data.find("ul",{"class" : "PastRankList"}).find_all('li')
-    print(ranks)
-    return ranks
+    rankser = ['<b>we dont have enough info<b>']
+    try:
+     ranks = data.find("ul",{"class" : "PastRankList"}).find_all('li')
+    except:
+      ranks='' 
+    if ranks:
+       print('right')   
+       return ranks
+    else:
+     return ranks      
 
 #Il faut trouver un moyen de trouver toute les saisons et les liés a une personne
 def get_data_rank(rank):
-    try:
+
       saison = rank.find("b").text
-    except:
-          saison = ''
-    try:
-          rang = rank.get('title')
-    except:
-          rang = ''
-    rank = {'saisons': saison,
+
+      rang = rank.get('title')
+
+      rank = {'saisons': saison,
             'rangs': rang}
-    return rank
+      return rank
 
 
 def write_past_rank(i, rank,data):
