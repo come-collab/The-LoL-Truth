@@ -45,22 +45,32 @@ def get_item_data(item):
 
 #la on recupere les ranks
 def get_ranks(html):
-    soup = BeautifulSoup(html, 'lxml')
     #Ici on defini ce que le Scrapper vas nous renvoyer
-    ranks = soup.find("div", {"class": "PastRank"}).findAll("ul", {"class": "PastRankList"})
-    
-    #if ranks == '': créer une condition pour quand ranks est empty 
-    
+    #ranks = soup.find("ul", {"class": "PastRankList"})
+    data = BeautifulSoup(html, 'html.parser')
+  
+    # finding parent <ul> tag
+    parent = data.find("ul",{"class" : "PastRankList"})
+  
+    # finding all <li> tags
+    text = list(parent.descendants)
+    for ele in text:
+      if ele == '\n':
+       text.remove(ele)
+
+    print(text)
+    # printing the content in <li> tag
+    ranks = text 
     return ranks
 
 #Il faut trouver un moyen de trouver toute les saisons et les liés a une personne
 def get_data_rank(rank):
     try:
-          saison = rank.find('li').text
+      saison = rank.find("b")
     except:
           saison = ''
     try:
-          rang = rank.find("li").text
+          rang = rank.get('title')
     except:
           rang = ''
     rank = {'saisons': saison,
@@ -75,7 +85,6 @@ def write_past_rank(i, rank,data):
         rank['rangs'],data['price']))
         print(i, rank['rangs'], 'parsed')
 
-
 def write_csv(i, data):
     with open('summoners.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
@@ -83,7 +92,6 @@ def write_csv(i, data):
         data['price']))
         print(i, data['title'], 'parsed')
 
-#Fonction main réunissant toutes les anciennes fonctions en une et créer le projet
 def main():
    url = 'https://euw.op.gg/ranking/ladder/'
    for page in range(1, 5):  # count of pages to parse
@@ -95,6 +103,7 @@ def main():
             print ('voila la nouvelle url ' + new_url)
             all_ranks = get_ranks(get_html('https:' + new_url))
             for j, rank in enumerate(all_ranks):
+                print(enumerate(all_ranks))
                 new_data = get_data_rank(rank)
                 write_past_rank(j,new_data,data)
 
