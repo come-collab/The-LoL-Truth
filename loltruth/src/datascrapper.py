@@ -78,22 +78,51 @@ def write_csv(i, data):
         data['price']))
         print(i, data['title'], 'parsed')
 
+def getTheLowestElo(new_data):
+    #Tableau utilisé pour faire notre comparaison  
+    rankings = ['Silver','Gold','Platinium','Diamond','Master','GrandMaster','Challenger']
+
+#variable globale
+actualdata = []
+
+def getAllinformationOnUser(data,new_data,actualdata,i):
+      #Le but dans cette fonction est de recuperer tout les fonction de utilisateur 1 et de les reunir en un object
+      # avec tout les rangs de toutes les saisons
+      print('i',i)
+      if (i > 0 and data['price'] != actualdata[1]):
+            #ici on recupere le tableau complet/ nom
+            actualdata.clear()
+      actualdata.append(new_data['rangs'])
+      actualdata.append(data['price'])
+      actualdata.append(new_data['saisons'])
+      print(data['price'])
+      print(actualdata)
+      
+      print("actual data :", actualdata)
+      
+
+
+
 def main():
    url = 'https://euw.op.gg/ranking/ladder/'
    for page in range(1, 5):  # count of pages to parse
        all_items = get_all_items(get_html(url + '?_pgn={}'.format(page)))
+       #On recupere le premier nom
        for i, item in enumerate(all_items):
             data = get_item_data(item)
             write_csv(i, data)
             new_url = data['title']
             print ('voila la nouvelle url ' + new_url)
             all_ranks = get_ranks(get_html('https:' + new_url))
+            #on recupere tout les informations du premier nom
             for j, rank in enumerate(all_ranks):
                 print('enumerate : ')  
                 print(enumerate(all_ranks))  
                 new_data = get_data_rank(rank)
-                #newdata contain all the info needed and its new data that is written in cv below 
                 write_past_rank(j,new_data,data)
+                print('data :',data,'newdata:',new_data)
+                #on vas tenter de reunir toutes les informations :
+                getAllinformationOnUser(data,new_data,actualdata,i)           
 
 if __name__ == '__main__':
    main()

@@ -1,0 +1,35 @@
+So know we can fetch the data from op.gg and get the rank that the guys been on since the first season they made.
+
+We need to do 1 graph that take the ranks of start
+
+Amedal S6 silver
+Jean S4 silver
+
+
+need to take all the lower rank starter : en moyenne les joueurs pros place .... tel rang{silver, gold , plat, diamand...} des la premiere saison de jeu en excluant les smurfs.
+
+En moyenne les meilleurs joueurs de LoL atteignent le High high ELO (above master en X (x étant le nombres d'années)).
+
+
+Comment on fais ca ?
+A partir d'un fichier 
+
+Deux values :
+            temps pour high elo : THE
+            Premier rang : PR
+
+
+Fonction definier le PR
+ quelle data recevons nous ? :
+
+ ranking tableau[silver,gold,platinium,diamond,master,grandmaster,challenger]
+
+ #1 identifier dans newdata{rangs : 'Rang 2 30LP'}
+    recuperer le rang dans le string
+    if il est egale a tableau[0]:
+        lowestElo = tableau[0]
+
+
+
+
+ if(rang)
