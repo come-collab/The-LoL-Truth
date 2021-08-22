@@ -38,35 +38,17 @@ def get_item_data(item):
             'price': price}
     return data
 
-#Ici on vas essayer de recuperer title qui est en realité,
-#une URL et visiter chaque page de chaque utilisateur pour recuperer leur rang des saisons précédentes
-#Pour passer a l etape deux il nous faut desormais partir sur une deuxieme etape les urls a visiter sont
-#contenu dans : data['title']
-
 #la on recupere les ranks
 def get_ranks(html):
-    #Ici on defini ce que le Scrapper vas nous renvoyer
-    #ranks = soup.find("ul", {"class": "PastRankList"})
     data = BeautifulSoup(html, 'html.parser')
-  
-    # finding parent <ul> tag
-    parent = data.find("ul",{"class" : "PastRankList"})
-  
-    # finding all <li> tags
-    text = list(parent.descendants)
-    for ele in text:
-      if ele == '\n':
-       text.remove(ele)
-
-    print(text)
-    # printing the content in <li> tag
-    ranks = text 
+    ranks = data.find("ul",{"class" : "PastRankList"}).find_all('li')
+    print(ranks)
     return ranks
 
 #Il faut trouver un moyen de trouver toute les saisons et les liés a une personne
 def get_data_rank(rank):
     try:
-      saison = rank.find("b")
+      saison = rank.find("b").text
     except:
           saison = ''
     try:
@@ -103,8 +85,10 @@ def main():
             print ('voila la nouvelle url ' + new_url)
             all_ranks = get_ranks(get_html('https:' + new_url))
             for j, rank in enumerate(all_ranks):
-                print(enumerate(all_ranks))
+                print('enumerate : ')  
+                print(enumerate(all_ranks))  
                 new_data = get_data_rank(rank)
+                #newdata contain all the info needed and its new data that is written in cv below 
                 write_past_rank(j,new_data,data)
 
 if __name__ == '__main__':
