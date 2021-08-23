@@ -98,27 +98,40 @@ def getTheLowestElo(new_data):
     new_data = [element.split() for element in new_data]
     #On flatten l'array
     new_data = [item for sublist in new_data for item in sublist]  
-    #Il faut recuperer les rangs sans les lps
-    for el in new_data:
-          if el == rankings[0]:
-                lowestElo = 'Silver'       
-    if lowestElo != 'Silver':
-          for el in new_data:
-                if el == rankings[1]:
-                      lowestElo ='Gold'
-    if lowestElo != 'Silver' and lowestElo != 'Gold':
-          for el in new_data:
-                if el == rankings[2]:
-                      lowestElo = 'Platinum'  
-    if lowestElo != 'Silver' and lowestElo != 'Gold' and lowestElo != 'Platinum':
-          for el in new_data:
-                if el == rankings[3]:
-                      lowestElo = 'Diamond'
-    else: lowestElo = 'Smurf'
-    #Probablement devoir appeller une fonction qui crée un csv avec le elo minimum de chaque Challenger  
+    #Fonction permettant de definir qu'elle est le ELO le plus bas de chaque player in challenger babyyyyyyy 
+    lowestElo = '' 
+    if 'Silver' in new_data:
+          lowestElo = 'Silver'
+          write_lowest_elo(lowestElo,nameUser)
+          return lowestElo
+    else :
+          if 'Gold' in new_data:
+                lowestElo =  'Gold'
+                write_lowest_elo(lowestElo,nameUser)
+                return lowestElo
+          else:
+                if 'Platinum' in new_data:
+                      lowestElo = 'Platinum'
+                      write_lowest_elo(lowestElo,nameUser)
+                      return lowestElo
+                else:
+                      if 'Diamond' in new_data:
+                            lowestElo = 'Diamond'
+                            write_lowest_elo(lowestElo,nameUser)
+                            return lowestElo
+                      else:
+                            lowestElo = 'Smurf'
+                            write_lowest_elo(lowestElo,nameUser)
+                            return lowestElo                           
+    #Probablement devoir appeller une fonction qui crée un csv avec le elo minimum de chaque Challenger 
+    #Ecrire le prenom sur csv avec le ELO le plus bas du joueur 
 
+def write_lowest_elo(lowestElo,nameUser):
+    with open('lowestRankPerName.csv', 'a',encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow((lowestElo,nameUser))
 
-#variable globale
+#Global variable
 actualdata = []
 
 def getAllinformationOnUser(data,new_data,actualdata,i):
@@ -128,9 +141,10 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
       if (i > 0 and data['price'] != actualdata[1]):
             #ici on recupere le tableau complet par nom
             getTheLowestElo(actualdata)
+            lowestElo = getTheLowestElo(actualdata)
+            print('le elo le plus bas est : ', lowestElo)
             #on clear le tableau apres chaque user
             actualdata.clear()
-
       actualdata.append(new_data['rangs'])
       actualdata.append(data['price'])
       actualdata.append(new_data['saisons'])
