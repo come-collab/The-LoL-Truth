@@ -94,8 +94,9 @@ def getTheLowestElo(new_data):
 
     #On supprime toutes les informations concernants les saisons
     new_data = [element for element in new_data if element not in elements_to_remove]   
-    #on retraite le tableau en supprimant les informations de ELO dont on a pas besoin  
-    new_data = [element.split() for element in new_data]
+    #on retraite le tableau en supprimant les informations de ELO dont on a pas besoin
+      
+    new_data = [element.split() for element in new_data if element is not None]
     #On flatten l'array
     new_data = [item for sublist in new_data for item in sublist]  
     #Fonction permettant de definir qu'elle est le ELO le plus bas de chaque player in challenger babyyyyyyy 
@@ -141,8 +142,6 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
       if (i > 0 and data['price'] != actualdata[1]):
             #ici on recupere le tableau complet par nom
             getTheLowestElo(actualdata)
-            lowestElo = getTheLowestElo(actualdata)
-            print('le elo le plus bas est : ', lowestElo)
             #on clear le tableau apres chaque user
             actualdata.clear()
       actualdata.append(new_data['rangs'])
