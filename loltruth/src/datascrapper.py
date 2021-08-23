@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+import numpy as np
 #Url vas permettre de definir la page que l'on veut cibler
 url = 'https://euw.op.gg/ranking/ladder/'
 #request permet de reach cette page lors de la compilation du code python
@@ -80,7 +81,42 @@ def write_csv(i, data):
 
 def getTheLowestElo(new_data):
     #Tableau utilisé pour faire notre comparaison  
-    rankings = ['Silver','Gold','Platinium','Diamond','Master','GrandMaster','Challenger']
+    rankings = ['Silver','Gold','Platinum','Diamond','Master','GrandMaster','Challenger']
+    elements_to_remove = ['S6','S9','S2020','S8','S7','S5','S2021','S4','S3','S2','S1']
+    lowestElo =""
+    #recupere le tableau avec tout les rangs
+    #el dans new_data doit etre le rang simple et ce serrais cool qu'il ny ai que les informations de rang pour eviter
+    #un traitement de données trop laborieux
+    #on supprime les duplicate et les noms des chall
+    nameUser = new_data[1]
+    new_data = list(set(new_data)) 
+    new_data.remove(nameUser)
+
+    #On supprime toutes les informations concernants les saisons
+    new_data = [element for element in new_data if element not in elements_to_remove]   
+    #on retraite le tableau en supprimant les informations de ELO dont on a pas besoin  
+    new_data = [element.split() for element in new_data]
+    #On flatten l'array
+    new_data = [item for sublist in new_data for item in sublist]  
+    #Il faut recuperer les rangs sans les lps
+    for el in new_data:
+          if el == rankings[0]:
+                lowestElo = 'Silver'       
+    if lowestElo != 'Silver':
+          for el in new_data:
+                if el == rankings[1]:
+                      lowestElo ='Gold'
+    if lowestElo != 'Silver' and lowestElo != 'Gold':
+          for el in new_data:
+                if el == rankings[2]:
+                      lowestElo = 'Platinum'  
+    if lowestElo != 'Silver' and lowestElo != 'Gold' and lowestElo != 'Platinum':
+          for el in new_data:
+                if el == rankings[3]:
+                      lowestElo = 'Diamond'
+    else: lowestElo = 'Smurf'
+    #Probablement devoir appeller une fonction qui crée un csv avec le elo minimum de chaque Challenger  
+
 
 #variable globale
 actualdata = []
@@ -90,14 +126,14 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
       # avec tout les rangs de toutes les saisons
       print('i',i)
       if (i > 0 and data['price'] != actualdata[1]):
-            #ici on recupere le tableau complet/ nom
+            #ici on recupere le tableau complet par nom
+            getTheLowestElo(actualdata)
+            #on clear le tableau apres chaque user
             actualdata.clear()
+
       actualdata.append(new_data['rangs'])
       actualdata.append(data['price'])
       actualdata.append(new_data['saisons'])
-      print(data['price'])
-      print(actualdata)
-      
       print("actual data :", actualdata)
       
 
