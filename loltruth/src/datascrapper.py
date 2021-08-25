@@ -169,8 +169,6 @@ def main():
                 print(enumerate(all_ranks))  
                 new_data = get_data_rank(rank)
                 write_past_rank(j,new_data,data)
-                print('data :',data,'newdata:',new_data)
-                #on vas tenter de reunir toutes les informations :
                 getAllinformationOnUser(data,new_data,actualdata,i)           
 
 if __name__ == '__main__':
