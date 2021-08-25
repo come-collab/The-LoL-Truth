@@ -80,8 +80,6 @@ def write_csv(i, data):
         print(i, data['title'], 'parsed')
 
 def getTheLowestElo(new_data):
-    #Tableau utilisé pour faire notre comparaison  
-    rankings = ['Silver','Gold','Platinum','Diamond','Master','GrandMaster','Challenger']
     elements_to_remove = ['S6','S9','S2020','S8','S7','S5','S2021','S4','S3','S2','S1']
     lowestElo =""
     #recupere le tableau avec tout les rangs
@@ -137,6 +135,40 @@ def write_lowest_elo(lowestElo,nameUser):
         writer = csv.writer(f)
         writer.writerow((lowestElo,nameUser))
 
+
+def getTimeToHighRank(actualdata):
+       rankings = ['Silver','Gold','Diamond','Platinum','Bronze','Master','Challenger','GrandMaster']
+    #premiere chose a faire rendre le tableau lisible  
+       nameUser = actualdata[1]
+       actualdata = [element.split() for element in actualdata if element is not None]
+       actualdata = [item for sublist in actualdata for item in sublist]
+       #reste en ordre  
+       counter = 0
+       newnewdata = []
+       #Clear le tableau pour qu'il ne reste que les rangs
+       for el in actualdata:
+           if el == 'Challenger' or el == 'Gold' or el == 'Platinum' or el =='Master' or el =='Diamond' or el =='Grandmaster' or el =='Silver' or el =='Bronze':
+               newnewdata.append(el)
+
+       print('actual data after cleaning it :', newnewdata)
+       for el in newnewdata:
+           counter += 1
+           if el == "Master" or el =="Challenger" or el == "Grandmaster":
+            break    
+       counter = counter -  1
+       print("Counter :", counter)
+       write_seasonToHighElo(counter,nameUser)
+       
+
+
+
+
+
+def write_seasonToHighElo(counter,nameUser):
+      with open('TimeToHighElo.csv', 'a',encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow((counter,nameUser))
+
 #Global variable
 actualdata = []
 
@@ -147,6 +179,7 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
       if (i > 0 and data['price'] != actualdata[1]):
             #ici on recupere le tableau complet par nom
             getTheLowestElo(actualdata)
+            getTimeToHighRank(actualdata)
             #on clear le tableau apres chaque user
             actualdata.clear()
       actualdata.append(new_data['rangs'])
