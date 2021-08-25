@@ -101,26 +101,31 @@ def getTheLowestElo(new_data):
     new_data = [item for sublist in new_data for item in sublist]  
     #Fonction permettant de definir qu'elle est le ELO le plus bas de chaque player in challenger babyyyyyyy 
     lowestElo = '' 
-    if 'Silver' in new_data:
+    if 'Bronze' in new_data:
+          lowestElo = 'Bronze'
+          write_lowest_elo(lowestElo,nameUser)
+          return lowestElo
+    else:
+      if 'Silver' in new_data:
           lowestElo = 'Silver'
           write_lowest_elo(lowestElo,nameUser)
           return lowestElo
-    else :
-          if 'Gold' in new_data:
+      else :
+            if 'Gold' in new_data:
                 lowestElo =  'Gold'
                 write_lowest_elo(lowestElo,nameUser)
                 return lowestElo
-          else:
-                if 'Platinum' in new_data:
+            else:
+                  if 'Platinum' in new_data:
                       lowestElo = 'Platinum'
                       write_lowest_elo(lowestElo,nameUser)
                       return lowestElo
-                else:
-                      if 'Diamond' in new_data:
+                  else:
+                        if 'Diamond' in new_data:
                             lowestElo = 'Diamond'
                             write_lowest_elo(lowestElo,nameUser)
                             return lowestElo
-                      else:
+                        else:
                             lowestElo = 'Smurf'
                             write_lowest_elo(lowestElo,nameUser)
                             return lowestElo                           
