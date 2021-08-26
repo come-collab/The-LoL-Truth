@@ -154,20 +154,14 @@ def getTimeToHighRank(actualdata):
        for el in newnewdata:
            counter += 1
            if el == "Master" or el =="Challenger" or el == "Grandmaster":
-            break    
-       counter = counter -  1
-       print("Counter :", counter)
+            break
        write_seasonToHighElo(counter,nameUser)
        
-
-
-
-
-
+ 
 def write_seasonToHighElo(counter,nameUser):
       with open('TimeToHighElo.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow((counter,nameUser))
+        writer.writerow(("Counter :",counter,nameUser))
 
 #Global variable
 actualdata = []
