@@ -80,7 +80,7 @@ def write_csv(i, data):
         print(i, data['title'], 'parsed')
 
 
-
+#Global  variable to define the number of people starting in Silver/Gold.....
 
 
 
@@ -185,7 +185,7 @@ def getTimeToHighRank(actualdata):
        if counter > 4:
            global counterYearMorethan4
            counterYearMorethan4 += 1    
-
+       
        write_seasonToHighElo(counter,nameUser)
 
 def write_seasonToHighElo(counter,nameUser):

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Chart from 'chart.js'
+import Chart from 'chart.js/auto'
 import planetChartData from '../planet-data.js'
 export default {
   name: 'PlanetChart',
