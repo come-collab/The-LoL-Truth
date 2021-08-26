@@ -166,7 +166,7 @@ def getTimeToHighRank(actualdata):
            counter += 1
            if el == "Master" or el =="Challenger" or el == "Grandmaster":
             break
-       #Function permettant de savoir en combien  de temps les personnes atteigne le haut elo
+       #Function permettant de savoir en combien  de temps les personnes atteigne le haut elo chaque variable compte le nombre de personne ayant atteint le high elo en tel temps....
        if counter == 1:
            global counterYear1
            counterYear1 += 1
