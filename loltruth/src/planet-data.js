@@ -4,7 +4,7 @@ export const planetChartData = {
     labels: ['Silver','Gold','Platinum','Diamond'],
     datasets: [{
       axis: 'y',
-      label: 'First rank reached by the player',
+      label: 'First rank ever reached by the player',
       text :'Hello worl' ,
       data: [65, 59, 80, 450],
       fill: false,
