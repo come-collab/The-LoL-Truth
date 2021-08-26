@@ -79,6 +79,11 @@ def write_csv(i, data):
         data['price']))
         print(i, data['title'], 'parsed')
 
+
+
+
+
+
 def getTheLowestElo(new_data):
     elements_to_remove = ['S6','S9','S2020','S8','S7','S5','S2021','S4','S3','S2','S1']
     lowestElo =""
@@ -136,8 +141,14 @@ def write_lowest_elo(lowestElo,nameUser):
         writer.writerow((lowestElo,nameUser))
 
 
+#counter year global variable
+counterYear1 = 0
+counterYear2 = 0
+counterYear3 = 0
+counterYear4 = 0
+counterYearMorethan4 = 0
+
 def getTimeToHighRank(actualdata):
-       rankings = ['Silver','Gold','Diamond','Platinum','Bronze','Master','Challenger','GrandMaster']
     #premiere chose a faire rendre le tableau lisible  
        nameUser = actualdata[1]
        actualdata = [element.split() for element in actualdata if element is not None]
@@ -155,9 +166,28 @@ def getTimeToHighRank(actualdata):
            counter += 1
            if el == "Master" or el =="Challenger" or el == "Grandmaster":
             break
+       #Function permettant de savoir en combien  de temps les personnes atteigne le haut elo
+       if counter == 1:
+           global counterYear1
+           counterYear1 += 1
+           print('counteryear1 : ', counterYear1)
+       if counter ==2:
+           global counterYear2
+           counterYear2 += 1
+           print('counteryear2 : ', counterYear2)
+       if counter == 3:
+           global counterYear3
+           counterYear3 += 1
+           print('counteryear3 : ', counterYear3)
+       if counter == 4:
+           global counterYear4
+           counterYear4 +=1
+       if counter > 4:
+           global counterYearMorethan4
+           counterYearMorethan4 += 1    
+
        write_seasonToHighElo(counter,nameUser)
-       
- 
+
 def write_seasonToHighElo(counter,nameUser):
       with open('TimeToHighElo.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
