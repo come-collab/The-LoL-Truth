@@ -81,7 +81,12 @@ def write_csv(i, data):
 
 
 #Global  variable to define the number of people starting in Silver/Gold.....
-
+BronzeCounter = 0
+SilverCounter = 0
+GoldCounter = 0
+PlatCounter = 0 
+DiamondCounter = 0
+SmurfCounter = 0
 
 
 def getTheLowestElo(new_data):
@@ -106,39 +111,53 @@ def getTheLowestElo(new_data):
     lowestElo = '' 
     if 'Bronze' in new_data:
           lowestElo = 'Bronze'
-          write_lowest_elo(lowestElo,nameUser)
+          global BronzeCounter
+          BronzeCounter += 1
+          write_lowest_elo(lowestElo,nameUser,BronzeCounter)
           return lowestElo
     else:
       if 'Silver' in new_data:
           lowestElo = 'Silver'
-          write_lowest_elo(lowestElo,nameUser)
+          global SilverCounter
+          SilverCounter += 1
+          write_lowest_elo(lowestElo,nameUser,SilverCounter)
           return lowestElo
       else :
             if 'Gold' in new_data:
                 lowestElo =  'Gold'
-                write_lowest_elo(lowestElo,nameUser)
+                global GoldCounter
+                GoldCounter += 1
+                write_lowest_elo(lowestElo,nameUser,GoldCounter)
                 return lowestElo
             else:
                   if 'Platinum' in new_data:
                       lowestElo = 'Platinum'
-                      write_lowest_elo(lowestElo,nameUser)
+                      global PlatCounter
+                      PlatCounter += 1
+                      write_lowest_elo(lowestElo,nameUser,PlatCounter)
                       return lowestElo
                   else:
                         if 'Diamond' in new_data:
                             lowestElo = 'Diamond'
-                            write_lowest_elo(lowestElo,nameUser)
+                            global DiamondCounter
+                            DiamondCounter += 1
+                            write_lowest_elo(lowestElo,nameUser,DiamondCounter)
                             return lowestElo
                         else:
                             lowestElo = 'Smurf'
-                            write_lowest_elo(lowestElo,nameUser)
-                            return lowestElo                           
+                            global SmurfCounter
+                            SmurfCounter += 1
+                            write_lowest_elo(lowestElo,nameUser,SmurfCounter)
+                            return lowestElo
+  
+
     #Probablement devoir appeller une fonction qui crée un csv avec le elo minimum de chaque Challenger 
     #Ecrire le prenom sur csv avec le ELO le plus bas du joueur 
 
-def write_lowest_elo(lowestElo,nameUser):
+def write_lowest_elo(lowestElo,nameUser,totalSameElo):
     with open('lowestRankPerName.csv', 'a',encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow((lowestElo,nameUser))
+        writer.writerow((lowestElo,nameUser,'Total same Elo :', totalSameElo))
 
 
 #counter year global variable
