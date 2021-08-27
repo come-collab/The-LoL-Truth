@@ -236,7 +236,7 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
 def main():
    url = 'https://euw.op.gg/ranking/ladder/'
    for page in range(1, 5):  # count of pages to parse
-       all_items = get_all_items(get_html(url + '?_pgn={}'.format(page)))
+       all_items = get_all_items(get_html(url + 'page={}'.format(page)))
        #On recupere le premier nom
        for i, item in enumerate(all_items):
             data = get_item_data(item)
