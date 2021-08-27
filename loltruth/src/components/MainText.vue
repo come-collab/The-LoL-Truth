@@ -6,7 +6,7 @@
     And why the dream of becoming a pro player/high rank player is extremely difficult to reach
     The whole website fetching of data, process of treating those data's and code is available on <a href = "https://github.com/come-collab">GitHub </a> 
     </p>
-    <button onclick="toggleText()"><strong>Tech Sidenote :</strong></button>
+    <button @click="openit"><strong>Tech Sidenote :</strong></button>
     <p id="demo" style="display : none"> 
     This site comes with a scrapper. The data is taken from multiples sources League of Legend API,
     and op.gg website. The study, the ideas, the data visualisation is done by me and is available on github , most of the intelligence of
@@ -24,18 +24,17 @@
     </div>
 </template>
 
-<!-- 
-export function toggleText() {
-  var text = document.getElementById("demo");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-}
--->
-
 
 <script>
+import {Myfunction} from '../smallscript'
 
+export default {
+  name : 'MainText',  
+  methods : {
+    openit : function(){
+        Myfunction.openit();
+    }    
+  }
+};
 </script>
+
