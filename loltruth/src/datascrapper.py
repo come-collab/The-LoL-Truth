@@ -189,22 +189,18 @@ def getTimeToHighRank(actualdata):
        if counter == 1:
            global counterYear1
            counterYear1 += 1
-           print('counteryear1 : ', counterYear1)
        if counter ==2:
            global counterYear2
            counterYear2 += 1
-           print('counteryear2 : ', counterYear2)
        if counter == 3:
            global counterYear3
            counterYear3 += 1
-           print('counteryear3 : ', counterYear3)
        if counter == 4:
            global counterYear4
            counterYear4 +=1
        if counter > 4:
            global counterYearMorethan4
            counterYearMorethan4 += 1    
-       
        write_seasonToHighElo(counter,nameUser)
 
 def write_seasonToHighElo(counter,nameUser):
@@ -231,11 +227,14 @@ def getAllinformationOnUser(data,new_data,actualdata,i):
       print("actual data :", actualdata)
       
 
-
+def write_counter_year(data1,data2,data3,data4,data5):
+    with open('yearstohighelo.csv', 'a',encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(("In 1 year :",data1,"In 2 year :",data2,"In 3 year :",data3,"In 4 year :",data4,"In 5 year :",data5))
 
 def main():
    url = 'https://euw.op.gg/ranking/ladder/'
-   for page in range(1, 5):  # count of pages to parse
+   for page in range(1, 2):  # count of pages to parse
        all_items = get_all_items(get_html(url + 'page={}'.format(page)))
        #On recupere le premier nom
        for i, item in enumerate(all_items):
@@ -250,7 +249,8 @@ def main():
                 print(enumerate(all_ranks))  
                 new_data = get_data_rank(rank)
                 write_past_rank(j,new_data,data)
-                getAllinformationOnUser(data,new_data,actualdata,i)           
+                getAllinformationOnUser(data,new_data,actualdata,i)    
+   write_counter_year(counterYear1,counterYear2,counterYear3,counterYear4,counterYearMorethan4)                   
 
 if __name__ == '__main__':
    main()
