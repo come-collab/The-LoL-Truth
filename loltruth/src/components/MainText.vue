@@ -1,7 +1,7 @@
 
 <template>
     <div>
-    <h1> League of legend truth based on data</h1>
+    <h1><strong>League of legend truth based on data</strong></h1>
     <p>This website have for goal to explain to people why League of Legend is top notch in terms of competition
     And why the dream of becoming a pro player/high rank player is extremely difficult to reach
     The whole website fetching of data, process of treating those data's and code is available on <a href = "https://github.com/come-collab">GitHub </a> 
