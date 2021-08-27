@@ -17,9 +17,15 @@
       unrealistic need to be a high elo player. This website is going to show what the majority of high elo player share in commun and why they
       are at the place they are at and that a big part of that is inner skill.
       The idea came from a video of the very famous LoL Coach LS who said that every pro player he ever encountered reach high elo in less than two years of playing the game
-      thats why i lead this study, to help people understand that on such a hard game reaching top level is not for everybody.
-      in this first graph you will see that one of those thing is the first rank they ever reach. Of course all the accounts selected are mains and not smurf.
-      Enjoy !
+      thats why i lead this study, to help people understand that on such a hard game reaching top level is not for everybody. And that LoL is kinda like NBA
+      some people have a 7 feet heigh other just dont have it.
+    </p>
+
+    <h3>First rank ever reached per player</h3>
+    <p>DATA : all the data collected comes from 3 different servers : Korea, NA and EUW and are from the top 500 players of each servers</p>
+    <p>The following graph show the first rank ever reached by the players wich means what is the rank they reached after only one season of playing
+      as we can observe right there Diamond come first and platinum second but those two monopolyze a big part of the first rank as a comparaison Ive personnaly
+      reached Plat after 3 years of playing the game.
     </p>
     </div>
 </template>
