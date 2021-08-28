@@ -1,5 +1,7 @@
 <template>
     <div>
+    <br>
+    <br>
     <u><h3>How many times it took get to high elo</h3></u>
     <p>The purpose of this graph is to understand that for most of the top players it didn't took a lot of time to reach
         high elo. Actually as we can see on the graph a huge majority of the high elo player reach high elo (Master,GrandMaster,Challenger),
