@@ -4,7 +4,7 @@ export const planetChartData = {
       labels: ['1 years','2 years','3 years','4 years','5 or More','Smurfs'],
       datasets: [{
         label: ['First rank ever reached by the player'],
-        data: [84, 126, 185, 700,333,123],
+        data: [342, 188, 97, 74, 16, 185],
         fill: false,
         backgroundColor: [
           'rgb(255, 99, 132, 0.5)',

@@ -20,8 +20,9 @@
       thats why i lead this study, to help people understand that on such a hard game reaching top level is not for everybody. And that LoL is kinda like NBA
       some people have a 7 feet heigh other just dont have it.
     </p>
-
-    <h3>First rank ever reached per player</h3>
+    <br>
+    <br>
+    <u><h3>First rank ever reached per player</h3></u>
     <p>DATA : all the data collected comes from 3 different servers : Korea, NA and EUW with an approximated total of 1000 players</p>
     <p>The following graph show the first rank ever reached by the players wich means what is the rank they reached after only one season of playing
       as we can observe right there Diamond come first and platinum second but those two monopolyze a big part of the first rank as a comparaison Ive personnaly
