@@ -4,6 +4,10 @@
     <PlanetChart/>
     <SecondGraphText/>
     <PlanetChart2/>
+    <br>
+    <Conclusion/>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -12,6 +16,7 @@ import PlanetChart from './components/PlanetChart.vue'
 import PlanetChart2 from './components/PlanetChart2.vue'
 import MainText from './components/MainText.vue'
 import SecondGraphText from './components/SecondGraphText.vue'
+import Conclusion from './components/Conclusion.vue'
 
 export default {
   name: 'App',
@@ -19,7 +24,8 @@ export default {
     PlanetChart,
     PlanetChart2,
     MainText,
-    SecondGraphText
+    SecondGraphText,
+    Conclusion
   }
 }
 </script>
