@@ -3,27 +3,29 @@ export const planetChartData = {
     data : {
       labels: ['1 years','2 years','3 years','4 years','5 or More','Smurfs'],
       datasets: [{
-        axis: 'y',
         label: ['First rank ever reached by the player'],
-        data: [84, 126, 185, 700],
+        data: [84, 126, 185, 700,333,123],
         fill: false,
         backgroundColor: [
-          'rgba(27,30,35, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(8, 69, 126, 0.4)',
-          'rgba(75, 192, 192, 0.2)'
+          'rgb(255, 99, 132, 0.5)',
+          'rgb(75, 192, 192, 0.5)',
+          'rgb(255, 205, 86, 0.5)',
+          'rgb(201, 203, 207, 0.5)',
+          'rgb(54, 162, 235, 0.5)',
+          'rgb(30,144,255)'
         ],
         borderColor: [
-          'rgb(27, 10, 30',
-          'rgb(255, 159, 64)',
-          'rgb(8, 30, 126)',
-          'rgb(75, 192, 192)'
+          'rgb(255, 99, 132)',
+          'rgb(75, 192, 192)',
+          'rgb(255, 205, 86)',
+          'rgb(201, 203, 207)',
+          'rgb(54, 162, 235)',
+          'rgb(30,144,255)'
         ],
         borderWidth: 1
       }]
     },
     options: {
-      indexAxis: 'y',
     }
   };
     
