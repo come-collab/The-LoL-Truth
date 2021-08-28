@@ -1,11 +1,11 @@
-export const planetChartData = {
+export const planetChartData2 = {
   type: 'bar',
   data : {
     labels: ['Silver','Gold','Platinum','Diamond'],
     datasets: [{
       axis: 'y',
       label: ['First rank ever reached by the player'],
-      data: [65, 59, 80, 450],
+      data: [84, 126, 185, 300],
       fill: false,
       backgroundColor: [
         'rgba(27,30,35, 0.2)',
@@ -27,4 +27,4 @@ export const planetChartData = {
   }
 };
   
-export default planetChartData;
+export default planetChartData2;

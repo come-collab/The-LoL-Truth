@@ -22,7 +22,7 @@
     </p>
 
     <h3>First rank ever reached per player</h3>
-    <p>DATA : all the data collected comes from 3 different servers : Korea, NA and EUW and are from the top 500 players of each servers</p>
+    <p>DATA : all the data collected comes from 3 different servers : Korea, NA and EUW with an approximated total of 1000 players</p>
     <p>The following graph show the first rank ever reached by the players wich means what is the rank they reached after only one season of playing
       as we can observe right there Diamond come first and platinum second but those two monopolyze a big part of the first rank as a comparaison Ive personnaly
       reached Plat after 3 years of playing the game.

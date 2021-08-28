@@ -2,17 +2,20 @@
   <div id="app">
     <MainText/>
     <PlanetChart/>
+    <PlanetChart2/>
   </div>
 </template>
 
 <script>
 import PlanetChart from './components/PlanetChart.vue'
+import PlanetChart2 from './components/PlanetChart2.vue'
 import MainText from './components/MainText.vue'
 
 export default {
   name: 'App',
   components: {
     PlanetChart,
+    PlanetChart2,
     MainText
   }
 }

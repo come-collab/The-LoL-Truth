@@ -3,7 +3,7 @@ import requests
 import csv
 import numpy as np
 #Url vas permettre de definir la page que l'on veut cibler
-url = 'https://euw.op.gg/ranking/ladder/'
+url = 'https://www.op.gg/ranking/ladder/'
 #request permet de reach cette page lors de la compilation du code python
 page = requests.get (url)
 
@@ -233,7 +233,7 @@ def write_counter_year(data1,data2,data3,data4,data5):
         writer.writerow(("In 1 year :",data1,"In 2 year :",data2,"In 3 year :",data3,"In 4 year :",data4,"In 5 year :",data5))
 
 def main():
-   url = 'https://euw.op.gg/ranking/ladder/'
+   url = 'https://www.op.gg/ranking/ladder/'
    for page in range(1, 5):  # count of pages to parse
        all_items = get_all_items(get_html(url + 'page={}'.format(page)))
        #On recupere le premier nom
