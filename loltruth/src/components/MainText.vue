@@ -2,7 +2,7 @@
 <template>
     <div>
     <h1><strong>League of legend truth based on data</strong></h1>
-    <p>This website have for goal to explain to people why League of Legend is top notch in terms of competition
+    <p>This website have as a goal to explain to people why League of Legend is top notch in terms of competition
     And why the dream of becoming a pro player/high rank player is extremely difficult to reach
     The whole website fetching of data, process of treating those data's and code is available on <a href = "https://github.com/come-collab">GitHub </a> 
     </p>
@@ -16,8 +16,8 @@
     <p> <strong>Idea explanation :</strong>The whole point is to help people to have more realistic goals on LoL and help them enjoy the game more without being devoured by the 
       unrealistic need to be a high elo player. This website is going to show what the majority of high elo player share in commun and why they
       are at the place they are at and that a big part of that is inner skill.
-      The idea came from a video of the very famous LoL Coach LS who said that every pro player he ever encountered reach high elo in less than two years of playing the game
-      thats why i lead this study, to help people understand that on such a hard game reaching top level is not for everybody. And that LoL is kinda like NBA
+      The idea came from a video of the very famous LoL Coach LS who said that every pro player he ever encountered had reached high elo in less than two years of playing the game
+      thats why i conducted this study, to help people understand that on such a hard game reaching top level is not for everybody. And that LoL is kinda like NBA
       some people have a 7 feet heigh other just dont have it.
     </p>
     <br>
