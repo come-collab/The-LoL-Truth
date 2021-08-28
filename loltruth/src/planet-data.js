@@ -24,6 +24,7 @@ export const planetChartData2 = {
   },
   options: {
     indexAxis: 'y',
+    animation : true
   }
 };
   
