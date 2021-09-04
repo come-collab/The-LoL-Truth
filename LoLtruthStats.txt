@@ -1,0 +1,62 @@
+1er graphique qui represente Premier rang / joueur
+
+2eme graphique qui represente le temps mis pour etre un joueur haut elo doughnut
+
+3eme partie qui parle du dopage et de l'Aderall
+https://www.washingtonpost.com/video-games/esports/2020/02/13/esports-adderall-drugs/
+
+matched data : 
+euw : 1 year : 113
+	  2 years : 76
+	  3 years : 40
+	  4 years : 28
+	  Smurfs/More than 5 years : 70		
+
+	  62 smurfs
+
+NA :  1 year : 88
+	  2 years : 44
+	  3 years : 39
+	  4 years : 38
+	  Smurfs/More than 5 years : 97
+	  34 smurfs
+
+Korea :  1 year : 141
+	  	 2 years : 68
+	 	 3 years : 18
+	 	 4 years : 8
+	 	 Smurfs/More than 5 years : 27
+	 	 89 smurfs
+
+Total : 1 year : 342
+		2 years : 188
+		3 years : 97
+		4 years : 74
+		Smurfs : 194
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+First rank ever reached by those top player : 
+EUW : Silver : 26
+	  Gold :44
+	  Plat : 67
+	  Diamond : 122
+	  High ELO : 62
+
+NA : Silver :45
+	  Gold : 55
+	  Plat : 80
+	  Diamond : 84
+	  High ELO :34
+
+KR : Silver : 13
+	  Gold : 27
+	  Plat : 38
+	  Diamond : 94
+	  High ELO : 89
+
+Total : Silver : 84
+		Gold : 126
+		Plat : 185
+		Diamond: 300
+		Smurfs : 	

@@ -2,16 +2,14 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 import numpy as np
-#Url vas permettre de definir la page que l'on veut cibler
+
 url = 'https://www.op.gg/ranking/ladder/'
-#request permet de reach cette page lors de la compilation du code python
+
 page = requests.get (url)
 
-#Renvoi le status de la requete GET/ ou autres
-#Rend un status 200 si ca a reussi
+
 print(page.status_code)
 
-#Je comprend pas ce que cette commande fait : 
 soup = BeautifulSoup (page.text, "html.parser")
 #print(soup)
 
@@ -21,11 +19,11 @@ def get_html(url):
 
 def get_all_items(html):
     soup = BeautifulSoup(html, 'lxml')
-    #Ici on defini ce que le Scrapper vas nous renvoyer
+
     items = soup.find("table", {"class": "ranking-table"}).findAll("tr", {"class": "ranking-table__row"})
     return items
 
-#On dit ce que l'on recupere dans les champs definient au dessus
+
 def get_item_data(item):
     try:
           title = item.find('a').get('href')
@@ -39,7 +37,7 @@ def get_item_data(item):
             'price': price}
     return data
 
-#la on recupere les ranks
+
 def get_ranks(html):
     data = BeautifulSoup(html, 'html.parser')
     rankser = ['<b>we dont have enough info<b>']
@@ -53,7 +51,6 @@ def get_ranks(html):
     else:
      return ranks      
 
-#Il faut trouver un moyen de trouver toute les saisons et les liés a une personne
 def get_data_rank(rank):
 
       saison = rank.find("b").text
@@ -92,22 +89,18 @@ SmurfCounter = 0
 def getTheLowestElo(new_data):
     elements_to_remove = ['S6','S9','S2020','S8','S7','S5','S2021','S4','S3','S2','S1']
     lowestElo =""
-    #recupere le tableau avec tout les rangs
-    #el dans new_data doit etre le rang simple et ce serrais cool qu'il ny ai que les informations de rang pour eviter
-    #un traitement de données trop laborieux
-    #on supprime les duplicate et les noms des chall
     nameUser = new_data[1]
     new_data = list(set(new_data)) 
     new_data.remove(nameUser)
 
-    #On supprime toutes les informations concernants les saisons
+   
     new_data = [element for element in new_data if element not in elements_to_remove]   
-    #on retraite le tableau en supprimant les informations de ELO dont on a pas besoin
+ 
       
     new_data = [element.split() for element in new_data if element is not None]
-    #On flatten l'array
+    
     new_data = [item for sublist in new_data for item in sublist]  
-    #Fonction permettant de definir qu'elle est le ELO le plus bas de chaque player in challenger babyyyyyyy 
+    
     lowestElo = '' 
     if 'Bronze' in new_data:
           lowestElo = 'Bronze'
@@ -149,10 +142,6 @@ def getTheLowestElo(new_data):
                             SmurfCounter += 1
                             write_lowest_elo(lowestElo,nameUser,SmurfCounter)
                             return lowestElo
-  
-
-    #Probablement devoir appeller une fonction qui crée un csv avec le elo minimum de chaque Challenger 
-    #Ecrire le prenom sur csv avec le ELO le plus bas du joueur 
 
 def write_lowest_elo(lowestElo,nameUser,totalSameElo):
     with open('lowestRankPerName.csv', 'a',encoding='utf-8') as f:
@@ -167,15 +156,13 @@ counterYear3 = 0
 counterYear4 = 0
 counterYearMorethan4 = 0
 
-def getTimeToHighRank(actualdata):
-    #premiere chose a faire rendre le tableau lisible  
+def getTimeToHighRank(actualdata): 
        nameUser = actualdata[1]
        actualdata = [element.split() for element in actualdata if element is not None]
        actualdata = [item for sublist in actualdata for item in sublist]
-       #reste en ordre  
+         
        counter = 0
        newnewdata = []
-       #Clear le tableau pour qu'il ne reste que les rangs
        for el in actualdata:
            if el == 'Challenger' or el == 'Gold' or el == 'Platinum' or el =='Master' or el =='Diamond' or el =='Grandmaster' or el =='Silver' or el =='Bronze':
                newnewdata.append(el)
@@ -185,7 +172,6 @@ def getTimeToHighRank(actualdata):
            counter += 1
            if el == "Master" or el =="Challenger" or el == "Grandmaster":
             break
-       #Function permettant de savoir en combien  de temps les personnes atteigne le haut elo chaque variable compte le nombre de personne ayant atteint le high elo en tel temps....
        if counter == 1:
            global counterYear1
            counterYear1 += 1
@@ -208,18 +194,14 @@ def write_seasonToHighElo(counter,nameUser):
         writer = csv.writer(f)
         writer.writerow(("Counter :",counter,nameUser))
 
-#Global variable
+
 actualdata = []
 
 def getAllinformationOnUser(data,new_data,actualdata,i):
-      #Le but dans cette fonction est de recuperer tout les fonction de utilisateur 1 et de les reunir en un object
-      # avec tout les rangs de toutes les saisons
       print('i',i)
       if (i > 0 and data['price'] != actualdata[1]):
-            #ici on recupere le tableau complet par nom
             getTheLowestElo(actualdata)
             getTimeToHighRank(actualdata)
-            #on clear le tableau apres chaque user
             actualdata.clear()
       actualdata.append(new_data['rangs'])
       actualdata.append(data['price'])
@@ -236,14 +218,12 @@ def main():
    url = 'https://www.op.gg/ranking/ladder/'
    for page in range(1, 5):  # count of pages to parse
        all_items = get_all_items(get_html(url + 'page={}'.format(page)))
-       #On recupere le premier nom
        for i, item in enumerate(all_items):
             data = get_item_data(item)
             write_csv(i, data)
             new_url = data['title']
             print ('voila la nouvelle url ' + new_url)
             all_ranks = get_ranks(get_html('https:' + new_url))
-            #on recupere tout les informations du premier nom
             for j, rank in enumerate(all_ranks):
                 print('enumerate : ')  
                 print(enumerate(all_ranks))  
