@@ -1,5 +1,5 @@
 # The-LoL-Truth
-
+### [Go visit the project !](www.lolbasedondata.com)
 ## Defining the purpose of the website.
 
 ### 1) Why you will not be good at League of Legend.
